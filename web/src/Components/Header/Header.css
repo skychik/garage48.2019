@@ -1,0 +1,19 @@
+.header {
+    background: #4084ec;
+    border: 0;
+    color: #fff;
+}
+
+.header a {
+    color: #fff;
+    margin: 10px;
+}
+
+.header_content {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+}

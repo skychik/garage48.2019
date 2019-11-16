@@ -1,0 +1,68 @@
+.task {
+    background: #fff;
+    width: 100%;
+    border-radius: 6px;
+    display: flex;
+    position: relative;
+    margin: 10px 0;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.task_left {
+    display: flex;
+    align-items: center;
+}
+
+.task_left img {
+    width: 100%;
+    height: auto;
+}
+
+.task_right {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.task_title {
+    font-size: 22px;
+    color: #4084ec;
+}
+
+.task_title,
+.task_tags {
+    margin: 5px;
+}
+
+.task_tags .tag {
+    padding: 2px 7px;
+    background: #4084ec;
+    margin: 5px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.task_date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px 10px;
+    margin: 5px;
+    color: #3f3456;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.task_user {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px 15px;
+    color: #dadada;
+}
+
+.task_user i {
+    margin-right: 5px;
+}
