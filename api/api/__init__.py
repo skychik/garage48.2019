@@ -1,3 +1,4 @@
+#coding=utf8
 import time
 
 
@@ -51,7 +52,7 @@ class API():
 			func = getattr(globals()[module], method)
 		except:
 			raise Error.ErrorWrong('method')
-		
+
 		# Запрос
 
 		return func(self, **params)

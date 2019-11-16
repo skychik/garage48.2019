@@ -1,3 +1,4 @@
+#coding=utf8
 import os
 import re
 import time
@@ -88,7 +89,7 @@ def check_params(x, filters): # ! Удалять другие поля (кото
 				# return dumps({'error': 4, 'message': ERROR[3].format(i[0], str(i[2]))})
 
 			cond_null = type(i[-1]) == bool and i[-1] and cond_iter and not len(x[i[0]])
-			
+
 			if cond_null:
 				raise ErrorInvalid(i[0])
 
@@ -105,5 +106,5 @@ def next_id(name):
 		id = db[name].find({}, db_filter).sort('id', -1)[0]['id'] + 1
 	except:
 		id = 1
-	
+
 	return id

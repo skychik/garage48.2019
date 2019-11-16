@@ -1,3 +1,4 @@
+#coding=utf8
 import time
 
 from mongodb import db
@@ -44,7 +45,7 @@ def edit(this, **x):
 		# Чужое задание
 		if query['token'] != this.user['token']:
 			raise ErrorAccess('token')
-	
+
 		process_edit = True
 
 	# Создание
@@ -74,7 +75,7 @@ def edit(this, **x):
 	if 'image' in x:
 		try:
 			file_type = x['file'].split('.')[-1]
-		
+
 		# Неправильное расширение
 		except:
 			raise ErrorInvalid('file')
@@ -93,7 +94,7 @@ def edit(this, **x):
 			query[par] = x[par]
 
 	db['tasks'].save(query)
-	
+
 	# Прикрепление задания к пользователю
 
 	this.user['tasks'].append(query['id'])
@@ -195,7 +196,7 @@ def get(this, **x):
 
 	for i in range(len(tasks)):
 		tasks[i]['image'] = get_preview('tasks', tasks[i]['id'])
-	
+
 	# Ответ
 
 	res = {

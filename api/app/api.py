@@ -1,4 +1,6 @@
+#coding=utf8
 from flask import request, jsonify
+
 from app import app, sio, SERVER
 
 from api import API, Error

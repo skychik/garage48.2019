@@ -1,4 +1,5 @@
-#!env/bin/python
+#!/usr/bin/python
+#coding=utf8
 from app import app
 
 from sets import SERVER

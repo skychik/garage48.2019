@@ -1,3 +1,4 @@
+#coding=utf8
 # Не все параметры
 
 class ErrorSpecified(Exception):

@@ -1,3 +1,4 @@
+#coding=utf8
 import os
 import time
 import re
