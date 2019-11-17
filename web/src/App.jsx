@@ -72,7 +72,7 @@ export default class App extends React.Component {
 							onRedirect={this.onRedirect}
 						/>
 					)}
-					<Header />
+					{/*<Header />*/}
 					<Switch>
 						{redirect.status === true && (
 							<>
