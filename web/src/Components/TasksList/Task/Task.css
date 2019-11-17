@@ -2,7 +2,7 @@
     background: #fff;
     width: 100%;
     max-width: 500px;
-    height: 700px;
+    max-height: 700px;
     border-radius: 6px;
     display: flex;
     position: relative;
