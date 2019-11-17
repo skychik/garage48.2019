@@ -1,7 +1,6 @@
 import React from 'react';
 import {socketIo} from '../Functions/api';
 import {dateFormat} from '../Functions/handle';
-import DailyIframe from '@daily-co/daily-js';
 
 // import {Link} from 'react-router-dom';
 

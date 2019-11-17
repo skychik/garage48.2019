@@ -18,7 +18,7 @@ class Home extends React.Component {
 		this.onCallTask = this.onCallTask.bind(this);
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		const { token } = this.props;
 		getTasks(this).then((res) => {
 			console.log(res);
