@@ -78,7 +78,7 @@ class Space extends React.Component {
 			document.getElementById('videochat'),
 			{
 				iframeStyle: {
-					position: 'fixed',
+					// position: 'fixed',
 					border: 0,
 					top: 0, left: 0,
 					width: '100%',
