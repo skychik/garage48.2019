@@ -1,10 +1,11 @@
 .task {
     background: #fff;
     width: 100%;
+    max-width: 500px;
     border-radius: 6px;
     display: flex;
     position: relative;
-    margin: 10px 0;
+    margin: 15px;
     flex-direction: column;
     cursor: pointer;
 }
@@ -17,11 +18,13 @@
 .task_left img {
     width: 100%;
     height: auto;
+    margin: auto;
 }
 
 .task_right {
     display: flex;
     padding: 20px;
+    margin-top: auto;
     flex-direction: column;
 }
 
