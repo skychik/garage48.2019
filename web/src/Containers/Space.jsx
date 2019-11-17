@@ -143,80 +143,80 @@ class Space extends React.Component {
 		}
 	}
 
-	call() {
-		navigator.mediaDevices.getUserMedia({video: true, audio: true})
-			.then((stream) => {
-				const videoLocal = document.getElementById('local');
-				videoLocal.autoplay = true;
-				videoLocal.muted = true;
-				videoLocal.srcObject = stream;
-				this.stream = stream;
-				// iOS
-				let peer = this.peer;
-				stream.getTracks().forEach((track) => {
-					peer.addTrack(track, stream);
-				});
-
-				return this.peer.createOffer();
-			})
-			.then((offer) => {
-				// Mozilla
-				this.peer.setLocalDescription(new RTCSessionDescription(offer)).then(
-					() => {
-						this.yourDescription = this.peer.localDescription;
-						if (this.yourDescription) {
-							socketIo.emit('description1', {
-								yourDescription: this.yourDescription,
-								room: document.location.pathname.split('/')[2]
-							});
-						}
-					},
-				);
-			});
-
-		this.peer.ontrack = (e) => {
-			document.getElementById('remote').srcObject = e.streams[0];
-		};
-	}
+	// call() {
+	// 	navigator.mediaDevices.getUserMedia({video: true, audio: true})
+	// 		.then((stream) => {
+	// 			const videoLocal = document.getElementById('local');
+	// 			videoLocal.autoplay = true;
+	// 			videoLocal.muted = true;
+	// 			videoLocal.srcObject = stream;
+	// 			this.stream = stream;
+	// 			// iOS
+	// 			let peer = this.peer;
+	// 			stream.getTracks().forEach((track) => {
+	// 				peer.addTrack(track, stream);
+	// 			});
+	//
+	// 			return this.peer.createOffer();
+	// 		})
+	// 		.then((offer) => {
+	// 			// Mozilla
+	// 			this.peer.setLocalDescription(new RTCSessionDescription(offer)).then(
+	// 				() => {
+	// 					this.yourDescription = this.peer.localDescription;
+	// 					if (this.yourDescription) {
+	// 						socketIo.emit('description1', {
+	// 							yourDescription: this.yourDescription,
+	// 							room: document.location.pathname.split('/')[2]
+	// 						});
+	// 					}
+	// 				},
+	// 			);
+	// 		});
+	//
+	// 	this.peer.ontrack = (e) => {
+	// 		document.getElementById('remote').srcObject = e.streams[0];
+	// 	};
+	// }
 
 	connect() {
 		this.peer.setRemoteDescription(this.description2);
 	}
 
-	answer() {
-		navigator.mediaDevices.getUserMedia({video: true, audio: true})
-			.then((stream) => {
-				const videoLocal = document.getElementById('local');
-				videoLocal.autoplay = true;
-				videoLocal.muted = true;
-				videoLocal.srcObject = stream;
-				this.stream = stream;
-				// iOS
-				let peer = this.peer;
-				stream.getTracks().forEach((track) => {
-					peer.addTrack(track, stream);
-				});
-
-				this.peer.setRemoteDescription(this.description1);
-			})
-			.then(() => this.peer.createAnswer())
-			.then((answer) => {
-				// Mozilla
-				this.peer.setLocalDescription(new RTCSessionDescription(answer)).then(() => {
-					this.yourDescription = this.peer.localDescription;
-					if (this.yourDescription) {
-						socketIo.emit('description2', {
-							yourDescription: this.yourDescription,
-							room: document.location.pathname.split('/')[2]
-						});
-					}
-				});
-			});
-
-		this.peer.ontrack = (e) => {
-			document.getElementById('remote').srcObject = e.streams[0];
-		};
-	}
+	// answer() {
+	// 	navigator.mediaDevices.getUserMedia({video: true, audio: true})
+	// 		.then((stream) => {
+	// 			const videoLocal = document.getElementById('local');
+	// 			videoLocal.autoplay = true;
+	// 			videoLocal.muted = true;
+	// 			videoLocal.srcObject = stream;
+	// 			this.stream = stream;
+	// 			// iOS
+	// 			let peer = this.peer;
+	// 			stream.getTracks().forEach((track) => {
+	// 				peer.addTrack(track, stream);
+	// 			});
+	//
+	// 			this.peer.setRemoteDescription(this.description1);
+	// 		})
+	// 		.then(() => this.peer.createAnswer())
+	// 		.then((answer) => {
+	// 			// Mozilla
+	// 			this.peer.setLocalDescription(new RTCSessionDescription(answer)).then(() => {
+	// 				this.yourDescription = this.peer.localDescription;
+	// 				if (this.yourDescription) {
+	// 					socketIo.emit('description2', {
+	// 						yourDescription: this.yourDescription,
+	// 						room: document.location.pathname.split('/')[2]
+	// 					});
+	// 				}
+	// 			});
+	// 		});
+	//
+	// 	this.peer.ontrack = (e) => {
+	// 		document.getElementById('remote').srcObject = e.streams[0];
+	// 	};
+	// }
 
 	handleKeyPress(event) {
 		if (event.key === 'Enter') {
