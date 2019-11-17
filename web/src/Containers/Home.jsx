@@ -82,8 +82,8 @@ class Home extends React.Component {
 		return (
 			<div className="content">
 				<div className="title title_group">
-					<span>Online tasks</span>
-					<img src="/img/logo.png" alt="" class="logo"/>
+					<span className="home-title">Online tasks</span>
+					<img src="/img/logo.png" alt="" className="logo"/>
 					<Link to="/create/task" className="btn">
 						<i className="fas fa-plus" />
 					</Link>

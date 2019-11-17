@@ -324,3 +324,8 @@ a {
     top: 0;
     left: calc(50vw - 60px);
 }
+
+.home-title {
+    background-color: rgba(246, 246, 250, 0.5);
+    backdrop-filter: blur(5px)
+}
