@@ -140,7 +140,7 @@ class EditTask extends React.Component {
 						<i className="fas fa-file-upload"/>
 						<span>Upload img</span>
 					</label>
-					<Button onClick={responce ? {} : this.onCreateTask}>
+					<Button onClick={responce ? {} : () => this.onCreateTask()}>
 						Create
 					</Button>
 				</div>
