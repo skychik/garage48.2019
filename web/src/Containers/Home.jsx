@@ -84,12 +84,12 @@ class Home extends React.Component {
 				<div className="title title_group">
 					<span>Online tasks</span>
 					<img src="/img/logo.png" alt="" style={{
-						width: "60px",
-						height: "60px",
-						// position: 'fixed',
-						// border: 0,
-						// top: 0,
-						left: "-57px",
+						width: "120px",
+						height: "120px",
+						position: 'fixed',
+						border: 0,
+						top: 0,
+						left: "50%",
 					}}/>
 					<Link to="/create/task" className="btn">
 						<i className="fas fa-plus" />
