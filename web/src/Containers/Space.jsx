@@ -90,24 +90,24 @@ class Space extends React.Component {
 
 		// install event handlers that just print out event information
 		// to the console
-		callFrame.on('loading', showEvent)
-			.on('loaded', showEvent)
-			.on('started-camera', showEvent)
-			.on('camera-error', showEvent)
-			.on('joining-meeting', showEvent)
-			.on('joined-meeting', showEvent)
-			.on('left-meeting', showEvent)
-			.on('participant-joined', showEvent)
-			.on('participant-updated', showEvent)
-			.on('participant-left', showEvent)
-			.on('recording-started', showEvent)
-			.on('recording-stopped', showEvent)
-			.on('recording-stats', showEvent)
-			.on('recording-error', showEvent)
-			.on('recording-upload-completed', showEvent)
-			.on('app-message', showEvent)
-			.on('input-event', showEvent)
-			.on('error', showEvent);
+		callFrame.on('loading', this.showEvent)
+			.on('loaded', this.showEvent)
+			.on('started-camera', this.showEvent)
+			.on('camera-error', this.showEvent)
+			.on('joining-meeting', this.showEvent)
+			.on('joined-meeting', this.showEvent)
+			.on('left-meeting', this.showEvent)
+			.on('participant-joined', this.showEvent)
+			.on('participant-updated', this.showEvent)
+			.on('participant-left', this.showEvent)
+			.on('recording-started', this.showEvent)
+			.on('recording-stopped', this.showEvent)
+			.on('recording-stats', this.showEvent)
+			.on('recording-error', this.showEvent)
+			.on('recording-upload-completed', this.showEvent)
+			.on('app-message', this.showEvent)
+			.on('input-event', this.showEvent)
+			.on('error', this.showEvent);
 
 		// join the room
 		await callFrame.join({url: room.url});
