@@ -3,7 +3,7 @@ from pymongo import MongoClient
 # from keys import DB
 
 
-db = MongoClient()['moscow']
+db = MongoClient()['estonia']
 
 # db = MongoClient(
 # 	username=DB['login'],
