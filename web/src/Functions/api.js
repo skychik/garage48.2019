@@ -2,7 +2,7 @@ import axios from 'axios';
 import openSocket from 'socket.io-client';
 
 function serverRequest(json = {}) {
-    return axios.post('https://tensy48.space/', json);
+    return axios.post('https://tensy48.space/api/', json);
 }
 
 function handlerResult(that, res, handlerSuccess, handlerError) {
