@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 
 import {socketIo} from '../Functions/api';
 import {dateFormat} from '../Functions/handle';
@@ -16,27 +16,27 @@ class Space extends React.Component {
 			position: document.location.search.split('=')[1],
 			arrayMessages: [],
 		};
-		this.onReload = this.onReload.bind(this);
+		// this.onReload = this.onReload.bind(this);
 		this.onSendMessage = this.onSendMessage.bind(this);
 		this.handleKeyPress = this.handleKeyPress.bind(this);
 
-		const stun = {iceServers: [{urls: 'stun:stun.l.google.com:19302'}]};
-		this.peer = new RTCPeerConnection(stun);
+		// const stun = {iceServers: [{urls: 'stun:stun.l.google.com:19302'}]};
+		// this.peer = new RTCPeerConnection(stun);
 
-		this.yourDescription = null;
-		this.otherDescription = null;
-		this.yourCandidate = null;
-		this.newCandidate = null;
+		// this.yourDescription = null;
+		// this.otherDescription = null;
+		// this.yourCandidate = null;
+		// this.newCandidate = null;
 
-		this.answer = this.answer.bind(this);
+		// this.answer = this.answer.bind(this);
 		this.call = this.call.bind(this);
 		this.connect = this.connect.bind(this);
 
-		this.candidate1 = null;
-		this.description1 = null;
-		this.candidate2 = null;
-		this.description2 = null;
-		this.sended = 0;
+		// this.candidate1 = null;
+		// this.description1 = null;
+		// this.candidate2 = null;
+		// this.description2 = null;
+		// this.sended = 0;
 		this.stream = null;
 	}
 
@@ -51,7 +51,7 @@ class Space extends React.Component {
 				this.setState({arrayMessages});
 			}
 		});
-		this.onReload();
+		// this.onReload();
 	}
 
 	onSendMessage() {
@@ -71,77 +71,77 @@ class Space extends React.Component {
 		}
 	}
 
-	onReload() {
-		const {position} = this.state;
-		console.log(position);
+	// onReload() {
+	// 	const {position} = this.state;
+	// 	console.log(position);
+	//
+	// 	// student
+	// 	if (position === 'student') {
+	// 		this.peer.onicecandidate = (e) => {
+	// 			if (e.candidate) {
+	// 				this.yourCandidate = e.candidate;
+	// 				if (this.yourCandidate) {
+	// 					this.sended++;
+	// 					console.log(this.sended, this.yourCandidate);
+	// 					console.log('!', this.sended);
+	// 					socketIo.emit('candidate2', {
+	// 						yourCandidate: this.yourCandidate,
+	// 						room: document.location.pathname.split('/')[2]
+	// 					});
+	// 				}
+	// 			}
+	// 		};
+	//
+	// 		socketIo.on('candidate1', (mes) => {
+	// 			if (mes.room === document.location.pathname.split('/')[2]) {
+	// 				console.log('!cand1', mes.yourCandidate);
+	// 				this.peer.addIceCandidate(mes.yourCandidate);
+	// 			}
+	// 		});
+			//
+			// socketIo.on('description1', (mes) => {
+			// 	if (mes.room === document.location.pathname.split('/')[2]) {
+			// 		console.log('!desc1', mes.yourDescription);
+			// 		this.description1 = mes.yourDescription;
+			// 		this.answer();
+			// 	}
+			// });
+		// } else if (position === 'teacher') {
+		// 	this.peer.onicecandidate = (e) => {
+		// 		if (e.candidate) {
+		// 			this.yourCandidate = e.candidate;
+		// 			if (this.yourCandidate) {
+		// 				this.sended++;
+		// 				console.log(this.sended, this.yourCandidate);
+		//
+		// 				console.log('!', this.sended);
+		// 				socketIo.emit('candidate1', {
+		// 					yourCandidate: this.yourCandidate,
+		// 					room: document.location.pathname.split('/')[2]
+		// 				});
+		// 			}
+		// 		}
+		// 	};
 
-		// student
-		if (position === 'student') {
-			this.peer.onicecandidate = (e) => {
-				if (e.candidate) {
-					this.yourCandidate = e.candidate;
-					if (this.yourCandidate) {
-						this.sended++;
-						console.log(this.sended, this.yourCandidate);
-						console.log('!', this.sended);
-						socketIo.emit('candidate2', {
-							yourCandidate: this.yourCandidate,
-							room: document.location.pathname.split('/')[2]
-						});
-					}
-				}
-			};
-
-			socketIo.on('candidate1', (mes) => {
-				if (mes.room === document.location.pathname.split('/')[2]) {
-					console.log('!cand1', mes.yourCandidate);
-					this.peer.addIceCandidate(mes.yourCandidate);
-				}
-			});
-
-			socketIo.on('description1', (mes) => {
-				if (mes.room === document.location.pathname.split('/')[2]) {
-					console.log('!desc1', mes.yourDescription);
-					this.description1 = mes.yourDescription;
-					this.answer();
-				}
-			});
-		} else if (position === 'teacher') {
-			this.peer.onicecandidate = (e) => {
-				if (e.candidate) {
-					this.yourCandidate = e.candidate;
-					if (this.yourCandidate) {
-						this.sended++;
-						console.log(this.sended, this.yourCandidate);
-
-						console.log('!', this.sended);
-						socketIo.emit('candidate1', {
-							yourCandidate: this.yourCandidate,
-							room: document.location.pathname.split('/')[2]
-						});
-					}
-				}
-			};
-
-			this.call();
-			this.call();
-
-			socketIo.on('candidate2', (mes) => {
-				if (mes.room === document.location.pathname.split('/')[2]) {
-					console.log('!cand2', mes.yourCandidate);
-					this.peer.addIceCandidate(mes.yourCandidate);
-				}
-			});
-
-			socketIo.on('description2', (mes) => {
-				if (mes.room === document.location.pathname.split('/')[2]) {
-					console.log('!desc2', mes.yourDescription);
-					this.description2 = mes.yourDescription;
-					this.connect();
-				}
-			});
-		}
-	}
+			// this.call();
+			// this.call();
+			//
+			// socketIo.on('candidate2', (mes) => {
+			// 	if (mes.room === document.location.pathname.split('/')[2]) {
+			// 		console.log('!cand2', mes.yourCandidate);
+			// 		this.peer.addIceCandidate(mes.yourCandidate);
+			// 	}
+			// });
+			//
+			// socketIo.on('description2', (mes) => {
+			// 	if (mes.room === document.location.pathname.split('/')[2]) {
+			// 		console.log('!desc2', mes.yourDescription);
+			// 		this.description2 = mes.yourDescription;
+			// 		this.connect();
+			// 	}
+			// });
+	// 	}
+	// }
 
 	// call() {
 	// 	navigator.mediaDevices.getUserMedia({video: true, audio: true})
@@ -179,9 +179,9 @@ class Space extends React.Component {
 	// 	};
 	// }
 
-	connect() {
-		this.peer.setRemoteDescription(this.description2);
-	}
+	// connect() {
+	// 	this.peer.setRemoteDescription(this.description2);
+	// }
 
 	// answer() {
 	// 	navigator.mediaDevices.getUserMedia({video: true, audio: true})
