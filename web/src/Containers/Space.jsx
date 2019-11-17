@@ -36,7 +36,7 @@ class Space extends React.Component {
 				this.setState({arrayMessages});
 			}
 		});
-		this.run().then(r => null);
+		this.run().then(() => null);
 		// this.onReload();
 	}
 
@@ -125,10 +125,6 @@ class Space extends React.Component {
 			arrayMessages,
 		} = this.state;
 		console.log(arrayMessages);
-		let callFrame = window.DailyIframe.createFrame();
-		callFrame.join({url: 'https://tensyteam.daily.co/test-call'});
-		let MY_IFRAME = <iframe allow="microphone; camera; autoplay" />
-		let callFrame1 = DailyIframe.wrap(MY_IFRAME);
 
 		return (
 			<div id="space">
