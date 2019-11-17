@@ -2,7 +2,7 @@ import React from 'react';
 import {socketIo} from '../Functions/api';
 import {dateFormat} from '../Functions/handle';
 
-// import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 class Space extends React.Component {
@@ -127,10 +127,10 @@ class Space extends React.Component {
 
 		return (
 			<div id="space">
+				<Link id="video_control" to="/">
+					<span>Go back</span>
+				</Link>
 				<div className="videochat_block" id="videochat">
-					{/*<Link id="video_control" to="/">*/}
-					{/*	<span>Go back</span>*/}
-					{/*</Link>*/}
 					{/*<div id="videos">*/}
 					{/*	<video id="local" autoPlay controls/>*/}
 					{/*	<video id="remote" autoPlay controls/>*/}

@@ -11,6 +11,7 @@ import Popup from './Containers/Popup.jsx';
 import Footer from './Components/Footer/Footer.jsx';
 
 import { socketIo } from './Functions/api';
+import Header from "./Components/Header/Header";
 
 
 export default class App extends React.Component {
@@ -71,7 +72,7 @@ export default class App extends React.Component {
 							onRedirect={this.onRedirect}
 						/>
 					)}
-					{/* <Header /> */ }
+					<Header />
 					<Switch>
 						{redirect.status === true && (
 							<>
