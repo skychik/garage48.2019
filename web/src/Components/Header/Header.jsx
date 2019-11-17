@@ -8,6 +8,9 @@ const Header = (props) => {
 			<img src="/img/logo.png" alt="" style={{
 				width: "40px",
 				height: "40px",
+				position: 'fixed',
+				border: 0,
+				top: 0, left: 0,
 			}}/>
 			<div className="header_content">
 				Tensyteam
