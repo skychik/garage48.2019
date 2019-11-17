@@ -37,17 +37,17 @@ class EditTask extends React.Component {
 				arrayOutput.file = file;
 			}
 			onPopup(true, 'loader');
-			sendImage(this, image, (other, res) => {
-				console.log(res);
-				this.setState({
-					sasha: res,
-				});
-			}, (other, res) => {
-				console.log(res);
-				this.setState({
-					sasha: null,
-				});
-			});
+			// sendImage(this, image, (other, res) => {
+			// 	console.log(res);
+			// 	this.setState({
+			// 		sasha: res,
+			// 	});
+			// }, (other, res) => {
+			// 	console.log(res);
+			// 	this.setState({
+			// 		sasha: null,
+			// 	});
+			// });
 			editTasks(this, arrayOutput).then((res) => {
 				this.setState({responce: false});
 				if (res.error === 0) {
