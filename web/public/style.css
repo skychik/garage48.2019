@@ -323,6 +323,7 @@ a {
     border: 0;
     top: 0;
     left: calc(50vw - 60px);
+    z-index: -1;
 }
 
 .home-title {
