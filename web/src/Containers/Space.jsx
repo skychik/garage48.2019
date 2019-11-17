@@ -229,6 +229,9 @@ class Space extends React.Component {
 			arrayMessages,
 		} = this.state;
 		console.log(arrayMessages);
+		let callFrame = window.DailyIframe.createFrame();
+		callFrame.join({url: 'https://tensyteam.daily.co/test-call'});
+		
 		return (
 			<div id="space">
 				<div className="videochat_block" id="videochat">
@@ -239,10 +242,6 @@ class Space extends React.Component {
 					{/*	<video id="local" autoPlay controls/>*/}
 					{/*	<video id="remote" autoPlay controls/>*/}
 					{/*</div>*/}
-					<>
-						let callFrame = window.DailyIframe.createFrame();
-						callFrame.join({{url: 'https://tensyteam.daily.co/test-call'}})
-					</>
 				</div>
 				<div className="chat_block" id="chat">
 					<div className="chat_content">
