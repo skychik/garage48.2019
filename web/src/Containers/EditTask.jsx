@@ -28,7 +28,7 @@ class EditTask extends React.Component {
 			image, file, text, tags,
 		} = newTask;
 		this.setState({responce: true});
-		if (text.length !== 0 && tags.length !== 0) {
+		if (text.length !== 0) {
 			const arrayOutput = {
 				text, tags,
 			};
