@@ -239,10 +239,10 @@ class Space extends React.Component {
 					{/*	<video id="local" autoPlay controls/>*/}
 					{/*	<video id="remote" autoPlay controls/>*/}
 					{/*</div>*/}
-					<script>
+					<>
 						let callFrame = window.DailyIframe.createFrame();
 						callFrame.join({{url: 'https://tensyteam.daily.co/test-call'}})
-					</script>
+					</>
 				</div>
 				<div className="chat_block" id="chat">
 					<div className="chat_content">
