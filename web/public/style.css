@@ -325,6 +325,11 @@ a {
     left: calc(50vw - 60px);
     z-index: -1;
 }
+@media (max-width: 485px) {
+    .logo {
+        display: none;
+    }
+}
 
 .home-title {
     background-color: rgba(246, 246, 250, 0.5);
