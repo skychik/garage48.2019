@@ -24,7 +24,7 @@ class Space extends React.Component {
 		this.stream = null;
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		// ожидание входящего сообщения
 		socketIo.on('message_get', (mes) => {
 			console.log(mes);

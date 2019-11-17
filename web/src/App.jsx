@@ -25,7 +25,7 @@ export default class App extends React.Component {
 		this.onRedirect = this.onRedirect.bind(this);
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		let tokenTemp;
 		if (localStorage.getItem('token') !== null) {
 			tokenTemp = JSON.parse(localStorage.getItem('token'));
