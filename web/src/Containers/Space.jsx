@@ -19,6 +19,8 @@ class Space extends React.Component {
 		};
 		this.onSendMessage = this.onSendMessage.bind(this);
 		this.handleKeyPress = this.handleKeyPress.bind(this);
+		this.showEvent = this.showEvent.bind(this);
+		this.run = this.run.bind(this);
 
 		this.stream = null;
 	}
@@ -34,6 +36,7 @@ class Space extends React.Component {
 				this.setState({arrayMessages});
 			}
 		});
+		this.run().then(r => null);
 		// this.onReload();
 	}
 
