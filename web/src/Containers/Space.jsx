@@ -1,8 +1,9 @@
 import React from 'react';
-// import {Link} from 'react-router-dom';
-
 import {socketIo} from '../Functions/api';
 import {dateFormat} from '../Functions/handle';
+import DailyIframe from '@daily-co/daily-js';
+
+// import {Link} from 'react-router-dom';
 
 
 class Space extends React.Component {
@@ -16,27 +17,9 @@ class Space extends React.Component {
 			position: document.location.search.split('=')[1],
 			arrayMessages: [],
 		};
-		// this.onReload = this.onReload.bind(this);
 		this.onSendMessage = this.onSendMessage.bind(this);
 		this.handleKeyPress = this.handleKeyPress.bind(this);
 
-		// const stun = {iceServers: [{urls: 'stun:stun.l.google.com:19302'}]};
-		// this.peer = new RTCPeerConnection(stun);
-
-		// this.yourDescription = null;
-		// this.otherDescription = null;
-		// this.yourCandidate = null;
-		// this.newCandidate = null;
-
-		// this.answer = this.answer.bind(this);
-		// this.call = this.call.bind(this);
-		// this.connect = this.connect.bind(this);
-
-		// this.candidate1 = null;
-		// this.description1 = null;
-		// this.candidate2 = null;
-		// this.description2 = null;
-		// this.sended = 0;
 		this.stream = null;
 	}
 
@@ -71,157 +54,67 @@ class Space extends React.Component {
 		}
 	}
 
-	// onReload() {
-	// 	const {position} = this.state;
-	// 	console.log(position);
-	//
-	// 	// student
-	// 	if (position === 'student') {
-	// 		this.peer.onicecandidate = (e) => {
-	// 			if (e.candidate) {
-	// 				this.yourCandidate = e.candidate;
-	// 				if (this.yourCandidate) {
-	// 					this.sended++;
-	// 					console.log(this.sended, this.yourCandidate);
-	// 					console.log('!', this.sended);
-	// 					socketIo.emit('candidate2', {
-	// 						yourCandidate: this.yourCandidate,
-	// 						room: document.location.pathname.split('/')[2]
-	// 					});
-	// 				}
-	// 			}
-	// 		};
-	//
-	// 		socketIo.on('candidate1', (mes) => {
-	// 			if (mes.room === document.location.pathname.split('/')[2]) {
-	// 				console.log('!cand1', mes.yourCandidate);
-	// 				this.peer.addIceCandidate(mes.yourCandidate);
-	// 			}
-	// 		});
-			//
-			// socketIo.on('description1', (mes) => {
-			// 	if (mes.room === document.location.pathname.split('/')[2]) {
-			// 		console.log('!desc1', mes.yourDescription);
-			// 		this.description1 = mes.yourDescription;
-			// 		this.answer();
-			// 	}
-			// });
-		// } else if (position === 'teacher') {
-		// 	this.peer.onicecandidate = (e) => {
-		// 		if (e.candidate) {
-		// 			this.yourCandidate = e.candidate;
-		// 			if (this.yourCandidate) {
-		// 				this.sended++;
-		// 				console.log(this.sended, this.yourCandidate);
-		//
-		// 				console.log('!', this.sended);
-		// 				socketIo.emit('candidate1', {
-		// 					yourCandidate: this.yourCandidate,
-		// 					room: document.location.pathname.split('/')[2]
-		// 				});
-		// 			}
-		// 		}
-		// 	};
-
-			// this.call();
-			// this.call();
-			//
-			// socketIo.on('candidate2', (mes) => {
-			// 	if (mes.room === document.location.pathname.split('/')[2]) {
-			// 		console.log('!cand2', mes.yourCandidate);
-			// 		this.peer.addIceCandidate(mes.yourCandidate);
-			// 	}
-			// });
-			//
-			// socketIo.on('description2', (mes) => {
-			// 	if (mes.room === document.location.pathname.split('/')[2]) {
-			// 		console.log('!desc2', mes.yourDescription);
-			// 		this.description2 = mes.yourDescription;
-			// 		this.connect();
-			// 	}
-			// });
-	// 	}
-	// }
-
-	// call() {
-	// 	navigator.mediaDevices.getUserMedia({video: true, audio: true})
-	// 		.then((stream) => {
-	// 			const videoLocal = document.getElementById('local');
-	// 			videoLocal.autoplay = true;
-	// 			videoLocal.muted = true;
-	// 			videoLocal.srcObject = stream;
-	// 			this.stream = stream;
-	// 			// iOS
-	// 			let peer = this.peer;
-	// 			stream.getTracks().forEach((track) => {
-	// 				peer.addTrack(track, stream);
-	// 			});
-	//
-	// 			return this.peer.createOffer();
-	// 		})
-	// 		.then((offer) => {
-	// 			// Mozilla
-	// 			this.peer.setLocalDescription(new RTCSessionDescription(offer)).then(
-	// 				() => {
-	// 					this.yourDescription = this.peer.localDescription;
-	// 					if (this.yourDescription) {
-	// 						socketIo.emit('description1', {
-	// 							yourDescription: this.yourDescription,
-	// 							room: document.location.pathname.split('/')[2]
-	// 						});
-	// 					}
-	// 				},
-	// 			);
-	// 		});
-	//
-	// 	this.peer.ontrack = (e) => {
-	// 		document.getElementById('remote').srcObject = e.streams[0];
-	// 	};
-	// }
-
-	// connect() {
-	// 	this.peer.setRemoteDescription(this.description2);
-	// }
-
-	// answer() {
-	// 	navigator.mediaDevices.getUserMedia({video: true, audio: true})
-	// 		.then((stream) => {
-	// 			const videoLocal = document.getElementById('local');
-	// 			videoLocal.autoplay = true;
-	// 			videoLocal.muted = true;
-	// 			videoLocal.srcObject = stream;
-	// 			this.stream = stream;
-	// 			// iOS
-	// 			let peer = this.peer;
-	// 			stream.getTracks().forEach((track) => {
-	// 				peer.addTrack(track, stream);
-	// 			});
-	//
-	// 			this.peer.setRemoteDescription(this.description1);
-	// 		})
-	// 		.then(() => this.peer.createAnswer())
-	// 		.then((answer) => {
-	// 			// Mozilla
-	// 			this.peer.setLocalDescription(new RTCSessionDescription(answer)).then(() => {
-	// 				this.yourDescription = this.peer.localDescription;
-	// 				if (this.yourDescription) {
-	// 					socketIo.emit('description2', {
-	// 						yourDescription: this.yourDescription,
-	// 						room: document.location.pathname.split('/')[2]
-	// 					});
-	// 				}
-	// 			});
-	// 		});
-	//
-	// 	this.peer.ontrack = (e) => {
-	// 		document.getElementById('remote').srcObject = e.streams[0];
-	// 	};
-	// }
-
 	handleKeyPress(event) {
 		if (event.key === 'Enter') {
 			this.onSendMessage();
 		}
+	}
+
+	showEvent(e) {
+		console.log('video call event -->', e);
+	}
+
+	async run() {
+		// create a short-lived demo room. if you just want to
+		// hard-code a meeting link for testing you could do something like
+		// this:
+		let room = {url: 'https://tensyteam.daily.co/hello'};
+
+		// create a video call iframe and add it to document.body
+		// defaults to floating window in the lower right-hand corner
+		let callFrame = window.DailyIframe.createFrame(
+			document.getElementById('videochat'),
+			{
+				iframeStyle: {
+					position: 'fixed',
+					border: 0,
+					top: 0, left: 0,
+					width: '100%',
+					height: '100%'
+				}
+			});
+		callFrame.join({url: 'https://tensyteam.daily.co/hello'});
+
+		// install event handlers that just print out event information
+		// to the console
+		callFrame.on('loading', showEvent)
+			.on('loaded', showEvent)
+			.on('started-camera', showEvent)
+			.on('camera-error', showEvent)
+			.on('joining-meeting', showEvent)
+			.on('joined-meeting', showEvent)
+			.on('left-meeting', showEvent)
+			.on('participant-joined', showEvent)
+			.on('participant-updated', showEvent)
+			.on('participant-left', showEvent)
+			.on('recording-started', showEvent)
+			.on('recording-stopped', showEvent)
+			.on('recording-stats', showEvent)
+			.on('recording-error', showEvent)
+			.on('recording-upload-completed', showEvent)
+			.on('app-message', showEvent)
+			.on('input-event', showEvent)
+			.on('error', showEvent);
+
+		// join the room
+		await callFrame.join({url: room.url});
+		console.log(' You are connected to', callFrame.properties.url, '\n',
+			'Use the window.callFrame object to experiment with', '\n',
+			'controlling this call. For example, in the console', '\n',
+			'try', '\n',
+			'    callFrame.participants()', '\n',
+			'    callFrame.setLocalVideo(false)', '\n',
+			'    callFrame.startScreenShare()');
 	}
 
 	render() {
@@ -231,7 +124,9 @@ class Space extends React.Component {
 		console.log(arrayMessages);
 		let callFrame = window.DailyIframe.createFrame();
 		callFrame.join({url: 'https://tensyteam.daily.co/test-call'});
-		
+		let MY_IFRAME = <iframe allow="microphone; camera; autoplay" />
+		let callFrame1 = DailyIframe.wrap(MY_IFRAME);
+
 		return (
 			<div id="space">
 				<div className="videochat_block" id="videochat">
