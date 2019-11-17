@@ -12,7 +12,7 @@ const Task = (props) => {
 	return (
 		<div className="task" key={task.id} onClick={() => { onCallTask(task.id); }}>
 			<div className="task_left">
-				{task.image !== 'https://tensyteam.ru/load/tasks/0.png' && (
+				{task.image !== 'https://tensy48.space/load/tasks/0.png' && (
 					<img src={task.image} alt="" />
 				)}
 			</div>

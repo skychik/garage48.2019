@@ -1,5 +1,4 @@
-import api from './api';
-
+import {api, sendImage} from './api';
 
 export function getTasks(that, data = {}) {
 	return new Promise((resolve) => {

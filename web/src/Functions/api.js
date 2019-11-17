@@ -2,7 +2,7 @@ import axios from 'axios';
 import openSocket from 'socket.io-client';
 
 function serverRequest(json = {}) {
-    return axios.post('https://tensyteam.ru/api/', json);
+    return axios.post('https://tensy48.space/', json);
 }
 
 function handlerResult(that, res, handlerSuccess, handlerError) {
@@ -13,7 +13,7 @@ function handlerResult(that, res, handlerSuccess, handlerError) {
     }
 }
 
-export default function api(that, method, params = {}, handlerSuccess = () => {},
+export function api(that, method, params = {}, handlerSuccess = () => {},
     handlerError = () => {}) {
     const json = {
         method,
@@ -25,5 +25,12 @@ export default function api(that, method, params = {}, handlerSuccess = () => {}
     serverRequest(json).then((res) => handlerResult(that, res.data, handlerSuccess, handlerError));
 }
 
+export function sendImage(that, image, handlerSuccess = () => {},
+                                  handlerError = () => {}) {
+    // console.log(json);
+    axios.post('https://tensy48.space/processImage', image).then((res) => handlerResult(that, res.data, handlerSuccess, handlerError));
+}
+
 // online
-export const socketIo = openSocket('https://tensyteam.ru/main');
+export let socketIo = openSocket('https://tensy48.space/main', { transport : ['websocket'] });
+

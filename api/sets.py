@@ -1,11 +1,11 @@
 SERVER = {
-	'link': 'https://tensyteam.ru/api/',
+	'link': 'https://tensy48.space/',
 	'ip': '127.0.0.1',
 	'port': 5000,
 }
 
 CLIENT = {
-	'link': 'https://tensyteam.ru/',
+	'link': 'https://tensy48.space/',
 	'ip': '127.0.0.1',
 	'port': 3001,
 }
