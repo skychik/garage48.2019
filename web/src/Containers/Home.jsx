@@ -88,7 +88,8 @@ class Home extends React.Component {
 						height: "60px",
 						// position: 'fixed',
 						// border: 0,
-						// top: 0, left: 0,
+						// top: 0,
+						left: "-57px",
 					}}/>
 					<Link to="/create/task" className="btn">
 						<i className="fas fa-plus" />
