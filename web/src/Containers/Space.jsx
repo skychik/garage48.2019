@@ -29,8 +29,8 @@ class Space extends React.Component {
 		// this.newCandidate = null;
 
 		// this.answer = this.answer.bind(this);
-		this.call = this.call.bind(this);
-		this.connect = this.connect.bind(this);
+		// this.call = this.call.bind(this);
+		// this.connect = this.connect.bind(this);
 
 		// this.candidate1 = null;
 		// this.description1 = null;
