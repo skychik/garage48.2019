@@ -1,5 +1,5 @@
 SERVER = {
-	'link': 'https://tensy48.space/',
+	'link': 'https://tensy48.space/api/',
 	'ip': '127.0.0.1',
 	'port': 5000,
 }
